@@ -8,10 +8,18 @@ namespace wa_asp_mvc_partial_view.Controllers
 {
     public class HomeController : Controller
     {
+        string[] products = { "Кефір", "Батон", "Стакан" };
+        string[] category = { "Алкоголь", "Їжа" };
+
         // GET: Home
-        public ActionResult Index()
+        public ActionResult Index(int? count)
         {
-            return View();
+            return View(products);
+        }
+
+        public ActionResult _Partial() 
+        {
+            return PartialView(category);
         }
     }
 }

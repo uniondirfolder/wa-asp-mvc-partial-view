@@ -1,17 +1,26 @@
-﻿
-@{
-    Layout = null;
+﻿@*@model Int32?*@
+@*@{
+        int count = 5;
+        if (Request.QueryString.Get("count") != null)
+        {
+            int.TryParse(Request.QueryString.Get("count"), out count);
+        }
+    }
+
+    @Html.Partial("_List", count)*@
+
+@model string[]
+
+@{ 
+    ViewBag.Title = "Products";
 }
 
-<!DOCTYPE html>
+@foreach (var product in Model)
+{
+    @Html.Partial("_List", product) @*задействует метод действия*@
+}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <div> 
-    </div>
-</body>
-</html>
+
+
+
+@Html.Action("_Partial"); @*не задействует метод действия*@
