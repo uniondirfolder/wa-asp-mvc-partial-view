@@ -17,10 +17,13 @@
 
 @foreach (var product in Model)
 {
-    @Html.Partial("_List", product) @*задействует метод действия*@
+    @Html.Partial("_Product", product) @*задействует метод действия*@
 }
 
 
 
 
 @Html.Action("_Partial"); @*не задействует метод действия*@
+
+<br/>
+@Html.ActionLink("Upload", "UploadFile");

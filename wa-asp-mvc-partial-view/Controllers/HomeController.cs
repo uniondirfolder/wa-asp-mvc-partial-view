@@ -21,5 +21,23 @@ namespace wa_asp_mvc_partial_view.Controllers
         {
             return PartialView(category);
         }
+
+        [HttpGet]
+        public ActionResult UploadFile() 
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult UploadFile(string name, HttpPostedFileBase file)
+        {
+            if(file != null) 
+            {
+                file.SaveAs(Server.MapPath($"~/Upload/{file.FileName}"));
+            }
+
+            return View();
+        }
+
     }
 }
